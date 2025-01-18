@@ -1,13 +1,13 @@
-📖 Overview
+📖 Overview:
 This project is a Movie Recommendation System built using collaborative filtering techniques. The system suggests movies to users based on their past interactions and the preferences of similar users.
 
-🚀 Features
+🚀 Features:
 Recommends movies using user-based and item-based collaborative filtering.
 Handles sparse data efficiently.
 Includes exploratory data analysis (EDA) on user ratings.
 Interactive interface for users to get personalized recommendations.
 
-🛠️ Tech Stack
+🛠️ Tech Stack:
 Programming Language: Python
 Libraries:
 pandas - for data manipulation.
@@ -15,14 +15,14 @@ numpy - for numerical operations.
 scikit-learn - for similarity computations.
 matplotlib/seaborn - for data visualization.
 
-📁 Dataset
+📁 Dataset:
 The system uses the MovieLens dataset, which contains user ratings for movies.
 
 Dataset Details:
 User IDs, Movie IDs, and Ratings.
 Additional metadata (e.g., genres, titles).
 
-🧠 Methodology
+🧠 Methodology:
 1. Data Preprocessing
 Handled missing data and duplicate entries.
 Transformed data into a user-item interaction matrix.
