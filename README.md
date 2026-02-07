@@ -1,3 +1,6 @@
+🔗 **Live Demo**  
+https://movie-recommendation-system-zcip.onrender.com
+
 📖 Overview:
 This project is a Movie Recommendation System built using collaborative filtering techniques. The system suggests movies to users based on their past interactions and the preferences of similar users.
 
@@ -31,4 +34,15 @@ User-based Filtering: Finds similar users and recommends movies they liked.
 Item-based Filtering: Recommends movies similar to those a user has already rated highly.
 3. Similarity Metrics
 Cosine Similarity
+
+## ▶️ How to Use
+1. Open the live demo link
+2. Select a movie from the dropdown
+3. Click **Recommend movies**
+4. View the recommended movies
+
+## 📌 Deployment
+- Built with **Streamlit**
+- Deployed on **Render**
+- Publicly accessible via the live demo link 
 
