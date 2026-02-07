@@ -4,8 +4,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 import streamlit as st
 
 
-movies_df = pd.read_csv('movies.csv')
-ratings_df = pd.read_csv('ratings.csv')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+movies_df = pd.read_csv(os.path.join(BASE_DIR, 'movies.csv'))
+ratings_df = pd.read_csv(os.path.join(BASE_DIR, 'ratings.csv'))
 
 
 merged_df = pd.merge(movies_df, ratings_df, on='movieId')
@@ -47,4 +49,5 @@ if st.button("Recommend movies"):
     recommended_movies = recommend_movies(movie_title, 5)
     st.write("Recommended movies:")
     for movie in recommended_movies:
+
         st.write(movie)
