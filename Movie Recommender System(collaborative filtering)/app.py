@@ -20,21 +20,31 @@ rating_matrix = rating_matrix.fillna(0)
 
 
 def get_movie_id(movie_title):
-    return movies_df.loc[movies_df['title'] == movie_title, 'movieId'].iloc[0]
+    movie = movies_df.loc[movies_df['title'] == movie_title, 'movieId']
+    if movie.empty:
+        return None
+    return movie.iloc[0]
 
 
-def recommend_movies(movie_title, num_recommendations):
+def recommend_movies(movie_title, num_recommendations=5):
     movie_id = get_movie_id(movie_title)
-    movie_ratings = rating_matrix.loc[movie_id]
-    movie_ratings = movie_ratings.to_frame()
-
     
-    similarity = cosine_similarity(movie_ratings.values.reshape(1, -1), rating_matrix.values).flatten()
+    if movie_id is None:
+        return []
 
-    top_indices = np.argsort(-similarity)[1:num_recommendations+1]
+    # Ratings vector of selected movie
+    movie_ratings = rating_matrix.loc[movie_id].values.reshape(1, -1)
 
-    
-    recommended_movies = movies_df.loc[movies_df['movieId'].isin(rating_matrix.index[top_indices])]['title'].tolist()
+    # Cosine similarity with all movies
+    similarity = cosine_similarity(movie_ratings, rating_matrix.values).flatten()
+
+    # Get top similar movies (excluding itself)
+    top_indices = np.argsort(similarity)[::-1][1:num_recommendations+1]
+
+    # Map indices to movie titles
+    recommended_movies = movies_df[
+        movies_df['movieId'].isin(rating_matrix.index[top_indices])
+    ]['title'].tolist()
 
     return recommended_movies
 
@@ -51,3 +61,4 @@ if st.button("Recommend movies"):
     for movie in recommended_movies:
 
         st.write(movie)
+
