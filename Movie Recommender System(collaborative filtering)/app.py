@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 import streamlit as st
+import os  
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -61,4 +62,5 @@ if st.button("Recommend movies"):
     for movie in recommended_movies:
 
         st.write(movie)
+
 
